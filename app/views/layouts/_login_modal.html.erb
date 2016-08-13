@@ -1,0 +1,137 @@
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content login-modal">
+          <div class="modal-header login-modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title text-center" id="loginModalLabel">USER AUTHENTICATION</h4>
+          </div>
+          <div class="modal-body">
+            <div class="text-center">
+              <div role="tabpanel" class="login-tab">
+              <!-- Nav tabs -->
+              <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a id="signin-taba" href="#home" aria-controls="home" role="tab" data-toggle="tab">Sign In</a></li>
+                <li role="presentation"><a id="signup-taba" href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Sign Up</a></li>
+                <li role="presentation"><a id="forgetpass-taba" href="#forget_password" aria-controls="forget_password" role="tab" data-toggle="tab">Forget Password</a></li>
+              </ul>
+
+              <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active text-center" id="home">
+                  &nbsp;&nbsp;
+                  <span id="login_fail" class="response_error" style="display: none;">Loggin failed, please try again.</span>
+                  <div class="clearfix"></div>
+                  <form class="new_user" id="new_user" action="/users/sign_in" accept-charset="UTF-8" method="post" _lpchecked="1">
+                  <div class="form-group">
+                      <div class="input-group">
+                          <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                          <input type="email" value="" name="user[email]" class="form-control" id="user_email" placeholder="Email">
+                      </div>
+                      <span class="help-block has-error" id="email-error"></span>
+                    </div>
+                    <div class="form-group">
+                      <div class="input-group">
+                          <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                          <input type="password" name="user[password]" class="form-control" id="user_password" placeholder="Password">
+                      </div>
+                      <span class="help-block has-error" id="password-error"></span>
+                    </div>
+                    <input name="user[remember_me]" type="hidden" value="0"><input type="checkbox" value="1" name="user[remember_me]" id="user_remember_me">
+                    <label for="user_remember_me">Remember me</label>
+                    <button type="submit" name="commit" id="login_btn" class="btn btn-block bt-login" data-loading-text="Signing In....">Login</button>
+                    <div class="clearfix"></div>
+                    <div class="login-modal-footer">
+                      <div class="row">
+                      <div class="col-xs-8 col-sm-8 col-md-8">
+                        <i class="fa fa-lock"></i>
+                        <a href="" class="forgetpass-tab"> Forgot password? </a>
+                      </div>
+                      <div class="col-xs-4 col-sm-4 col-md-4">
+                        <i class="fa fa-check"></i>
+                        <a href="" class="signup-tab"> Sign Up </a>
+                      </div>
+                    </div>
+                    </div>
+                </form>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="profile">
+                    &nbsp;&nbsp;
+                    <span id="registration_fail" class="response_error" style="display: none;">Registration failed, please try again.</span>
+                  <div class="clearfix"></div>
+                  <form class="new_user" id="new_user" action="/users" accept-charset="UTF-8" method="post">
+                  <input name="utf8" type="hidden" value="✓">
+                  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                  <div class="form-group">
+                      <div class="input-group">
+                          <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                          <input type="email" value="" name="user[email]" class="form-control" id="user_email" placeholder="Email">
+                      </div>
+                      <span class="help-block has-error" data-error='0' id="user_email-error"></span>
+                    </div>
+                    <div class="form-group">
+                      <div class="input-group">
+                          <div class="input-group-addon"><i class="fa fa-key"></i></div>
+                          <input type="password" name="user[password]" class="form-control" id="user_password" placeholder="Password (8 characters minimum)">
+                      </div>
+                      <span class="help-block has-error" data-error='0' id="user_password-error"></span>
+                    </div>
+                    <div class="form-group">
+                      <div class="input-group">
+                          <div class="input-group-addon"><i class="fa fa-key"></i></div>
+                          <input type="password" name="user[password_confirmation]" class="form-control" id="user_password_confirmation" placeholder="Password Confirmation">
+                      </div>
+                      <span class="help-block has-error" data-error='0' id="user_password-error"></span>
+                    </div>
+                    <button type="submit" name="commit" id="register_btn" class="btn btn-block bt-login" data-loading-text="Registering....">Register</button>
+                  <div class="clearfix"></div>
+                  <div class="login-modal-footer">
+                      <div class="row">
+                      <div class="col-xs-8 col-sm-8 col-md-8">
+                        <i class="fa fa-lock"></i>
+                        <a href="" class="forgetpass-tab"> Forgot password? </a>
+                      </div>
+                      <div class="col-xs-4 col-sm-4 col-md-4">
+                        <i class="fa fa-check"></i>
+                        <a href="" class="signin-tab"> Sign In </a>
+                      </div>
+                    </div>
+                    </div>
+                </form>
+                </div>
+                <div role="tabpanel" class="tab-pane text-center" id="forget_password">
+                  &nbsp;&nbsp;
+                    <span id="reset_fail" class="response_error" style="display: none;"></span>
+                    <div class="clearfix"></div>
+                    <form>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                            <input type="text" class="form-control" id="femail" placeholder="Email">
+                        </div>
+                        <span class="help-block has-error" data-error='0' id="femail-error"></span>
+                      </div>
+
+                      <button type="button" id="reset_btn" class="btn btn-block bt-login" data-loading-text="Please wait....">Forget Password</button>
+                    <div class="clearfix"></div>
+                    <div class="login-modal-footer">
+                        <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                          <i class="fa fa-lock"></i>
+                          <a href="" class="signin-tab"> Sign In </a>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                          <i class="fa fa-check"></i>
+                          <a href="" class="signup-tab"> Sign Up </a>
+                        </div>
+                      </div>
+                      </div>
+                  </form>
+                  </div>
+                </div>
+            </div>
+              </div>
+            </div>
+        </div>
+     </div>
+  </div>

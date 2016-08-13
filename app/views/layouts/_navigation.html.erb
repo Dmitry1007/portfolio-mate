@@ -1,0 +1,20 @@
+<div class="navbar-xs">
+   <div class="navbar-primary">
+       <nav class="navbar navbar-static-top" role="navigation">
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-8">
+                 <span class="sr-only">Toggle navigation</span>
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+              </button>
+              <%= link_to 'Home', root_path, class: 'navbar-brand' %>
+          </div>
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-8">
+              <ul class="nav navbar-nav">
+                 <%= render 'layouts/nav_links_for_auth' %>
+              </ul>
+          </div>
+      </nav>
+  </div>
+</div>
